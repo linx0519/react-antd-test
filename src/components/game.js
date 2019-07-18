@@ -58,7 +58,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       isNextX: true,
-      activeStep: ""
+      activeStep: "null"
     };
   }
 
@@ -76,14 +76,8 @@ class Game extends React.Component {
         xy: xy
       }]),
       isNextX: !this.state.isNextX,
-      stepNumber: history.length
-    });
-  }
-
-  handleRestart(winner) {
-    this.setState({
-      squares: Array(9).fill(null),
-      isNextX: !(winner === "X")
+      stepNumber: history.length,
+      activeStep: JSON.stringify(xy)
     });
   }
 
@@ -91,6 +85,11 @@ class Game extends React.Component {
     this.setState({
       stepNumber: move,
       isNextX: (move % 2) === 0,
+    });
+
+    const str = JSON.stringify(this.state.history[move].xy);
+    this.setState({
+      activeStep: str
     });
   }
 
@@ -103,9 +102,11 @@ class Game extends React.Component {
       const desc = move ?
         `Go to move #${move}` :
         "Go to game start";
-      let str = JSON.stringify(step.xy);
+      const str = JSON.stringify(step.xy);
       return (
-        <li key={move} className={{ "active": str === this.state.activeStep }}>
+        <li key={move} className={str == this.state.activeStep ? "active" : null}>
+          {/* <li key={move} className={"active": true}> */}
+
           <Button onClick={() => this.jumpTo(move)}>{`${desc}`}</Button>
           <span>{`${step.xy && step.xy.x + "," || ""}${step.xy && step.xy.y || ""}`}</span>
         </li>

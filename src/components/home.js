@@ -6,7 +6,6 @@ export default class Home extends React.Component {
     super(props);
   }
   handleClick = e => {
-    console.log(1111,this.props);
     this.props.history.push({
       pathname: "/game"
     });
@@ -15,7 +14,6 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        {/* <a href="/detail">go to detail</a> */}
         <button onClick={() => this.props.history.push({
           pathname: "/detail",
           state: {

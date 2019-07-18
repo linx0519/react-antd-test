@@ -1,8 +1,3 @@
-import React, { Component } from "react";
-// import ReactDom from "react-dom";
-// import Router from ""
-
-import { HashRouter, BrowserRouter, Route, Switch, hashHistory } from "react-router-dom";
 import Home from "../../src/components/home";
 import Detail from "../../src/components/detail";
 import Game from "../components/game";

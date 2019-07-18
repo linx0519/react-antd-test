@@ -12,9 +12,5 @@ export default class Detail extends React.Component {
       </div>
     );
   };
-
-  componentDidMount() {
-    // console.log(this.props.match.params);
-    console.log(this.props.history.location.state);
-  }
+  
 };

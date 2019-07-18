@@ -21,7 +21,6 @@ class App extends Component {
   };
 
   toggle = () => {
-    // act.onIncrement();
     store.dispatch(act.onIncrement());
     this.setState({
       collapsed: !this.state.collapsed,
@@ -29,7 +28,6 @@ class App extends Component {
   };
 
   handleClick = obj => {
-    // act.onDecrement();
     this.props.dispatch(act.onDecrement());
     this.props.history.push({
       pathname: obj.path
@@ -57,21 +55,23 @@ class App extends Component {
       );
     });
     return (
-      <Layout id="wrapper">
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.activeKey]}>
+      <Layout id='wrapper'>
+        <Sider trigger={null} collapsible
+          collapsed={this.state.collapsed}>
+          <div className='logo' />
+          <Menu theme='dark' mode='inline'
+            defaultSelectedKeys={[this.state.activeKey]}>
             {ItemArray}
           </Menu>
         </Sider>
         <Layout>
           <Header style={{ background: "#fff", padding: 0 }}>
             <Icon
-              className="trigger"
+              className='trigger'
               type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
               onClick={this.toggle}
             />
-            <span className="trigger">计数器：{this.props.count}</span>
+            <span className='trigger'>计数器：{this.props.count}</span>
           </Header>
           <Content
             style={{
